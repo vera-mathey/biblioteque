@@ -1,0 +1,13 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+fos_ck_editor:
+    configs:
+        my_config:
+            toolbar:
+                - { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline'] }
+                - { name: 'paragraph', items: ['NumberedList', 'BulletedList'] }
+                - { name: 'links', items: ['Link', 'Unlink'] }
+                - { name: 'insert', items: ['Image', 'Table'] }
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

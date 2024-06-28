@@ -1,0 +1,37 @@
+{# templates/comment.html.twig #}
+<div class="row">
+    <div class="col-md-4 mb-5">
+        <button type="button" class="btn btn-info" id="toggle-parent-comment-form">Laisser un commentaire</button>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+</div>
+
+
+    <div  class="parent-comment-form" style="height: 0; overflow: hidden;">
+        {{ form_start(commentForm) }}
+        {{ form_widget(commentForm) }}
+        <button type="submit" class="btn btn-sm btn-success mt-3 mb-3">Envoyer votre commentaire</button>
+        {{ form_end(commentForm) }}
+    </div>
+
+    <script>
+        // Ouvrir ou fermer le formulaire de commentaire
+            document.getElementById('toggle-parent-comment-form').addEventListener('click', function () {
+                var commentForm = document.querySelector('.parent-comment-form');
+                if (commentForm) {
+                    var isFormVisible = commentForm.style.height === 'auto';
+                    commentForm.style.height = isFormVisible ? '0' : 'auto';
+                }
+            });
+
+            // Réinitialiser le formulaire après la soumission
+            document.addEventListener('submit', function (event) {
+                if (event.target.classList.contains('parent-comment-form')) {
+                    var contentField = document.getElementById('comment-form-content');
+                    if (contentField) {
+                        contentField.value = '';
+                    }
+                }
+            });
+        </script>

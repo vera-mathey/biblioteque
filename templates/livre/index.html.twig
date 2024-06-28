@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliothèque{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-5 mb-5"><h1 class="h1-main">“Une <span>lecture amusante</span> est aussi utile à la santé que l’exercice du corps.”</h1><br><p class="p-main mb-5">Emmanuel Kant</p></div>
+            <div class="col-md-6"></div>
+        </div>    
+    </div>
+</div> 
+<div class="container">
+    <div class="col-md-12 d-flex justify-content-center mt-5 mb-5 h2-home"><h2>Les nouveautés</h2></div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4 mb-5">
+            {% for livre in livre %}
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'slug':livre.slug,'id' :livre.id}) }}">{{livre.title}}</a></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{livre.author.firstname}}</p><p>{{livre.author.lastname}}</p></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : livre.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ livre.image)}}" alt="couverture de livre"></a></div>
+            {% endfor %}
+        </div>
+
+        <div class="col-md-4 align-items-center mb-5">            
+            {% for livrea in livrea %}
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :livrea.id}) }}">{{livrea.title}}</a></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{livrea.author.firstname}}</p><p>{{livrea.author.lastname}}</p></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : livrea.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ livrea.image)}}" alt="couverture de livre"></a></div>                
+             {% endfor %}
+        </div>
+        
+        <div class="col-md-4 align-items-center mb-5">
+            {% for livreb in livreb %}
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :livreb.id}) }}">{{livreb.title}}</a></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{livreb.author.firstname}}</p><p>{{livreb.author.lastname}}</p></div>
+                <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : livreb.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ livreb.image)}}" alt="couverture de livre"></a></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+<div class="col-md-12 d-flex justify-content-center mt-5 mb-5 h2-home"><h2>Top 10 de février</h2></div>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+            
+                    <div class="col-md-4">
+                        {% for top in top %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :top.id}) }}">{{top.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{top.author.firstname}}</p><p>{{top.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : top.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ top.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="col-md-4">
+                        {% for topa in topa %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topa.id}) }}">{{topa.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topa.author.firstname}}</p><p>{{topa.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topa.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topa.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        {% for topb in topb %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topb.id}) }}">{{topb.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topb.author.firstname}}</p><p>{{topb.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topb.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topb.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+      
+            </div>
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% for topc in topc %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topc.id}) }}">{{topc.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topc.author.firstname}}</p><p>{{topc.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topc.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topc.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="col-md-4">
+                        {% for topd in topd %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topd.id}) }}">{{topd.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topd.author.firstname}}</p><p>{{topd.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topd.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topd.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        {% for tope in tope %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :tope.id}) }}">{{tope.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{tope.author.firstname}}</p><p>{{tope.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : tope.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ tope.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        
+            <div class="carousel-item">
+                <div class="row">
+                    <div class="col-md-4">
+                        {% for topf in topf %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topf.id}) }}">{{topf.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topf.author.firstname}}</p><p>{{topf.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topf.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topf.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="col-md-4">
+                        {% for topg in topg %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :topg.id}) }}">{{topg.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{topg.author.firstname}}</p><p>{{topg.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : topg.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ topg.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-md-4">
+                        {% for toph in toph %}
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :toph.id}) }}">{{toph.title}}</a></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><p class="me-2">{{toph.author.firstname}}</p><p>{{toph.author.lastname}}</p></div>
+                            <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showone', {'id' : toph.id}) }}"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ toph.image)}}" alt="couverture de livre"></a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <button class="carousel-control-prev buttons-carusel" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+</div>
+{% endblock %}

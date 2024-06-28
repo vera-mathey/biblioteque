@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}Author{% endblock %}
+{% block body %}
+<div class="container-fluid mb-5">
+    <div class="container">
+        <div class="col-md-12 mt-5">
+            <div class"row">
+                {% for author in author %}
+                    <div class="col-md-12 mb-2 d-flex justify-content-center">
+                        <a class="h2-livre" href="{{path('showauthor', {'id' :author.id}) }}">
+                            {{author.firstname}}&nbsp{{author.lastname}}
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

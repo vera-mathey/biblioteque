@@ -1,0 +1,82 @@
+<div class="container-fluid header-byblio">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4 mt-3 mb-3 connexion">
+                {% if app.user %}
+                    <a class="col-md-12 connexion me-3" href="{{path('app_logout')}}">
+                        {% if app.user.avatar is empty %}
+                            <i class="fas fa-user-circle fa-lg connexion" ></i>&ensp; <small></small>&ensp;<span class="connexion me-3">{{ app.user.lastname }}</span>
+                            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                        {% elseif app.user.roleadmin is not empty %}
+                            <img class="roundedImage me-1 img-fluid" src="{{asset('divers/images/users/' ~ app.user.avatar)}}"> <small class="connexion me-2">{{ app.user.firstname }}</small><span class="connexion me-2">{{ app.user.lastname }}</span>
+                            <i class="fa-solid fa-arrow-right-from-bracket me-3 connexion" aria-hidden="true"></i>
+                            <a class="connexion" href="{{path('admin')}}"><i class="fa-solid fa-laptop-code connexion me-2"></i>Tableau de bord</a>
+
+                        {% else %}
+                            <img class="roundedImage img-fluid" src="{{asset('divers/images/users/' ~ app.user.avatar)}}"> <small>{{ app.user.firstname }}</small>&ensp;<span class="connexion me-3">{{ app.user.lastname }}</span>
+                            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+
+                        {% endif %}
+                    </a>
+                        {% else %}
+                            <a class="connexion me-3" href="{{path('app_login')}}" style="cursor:pointer">
+                                <i class="fa-solid fa-user connexion  me-2" cursor:pointer></i>Connexion
+                            </a>
+                            <a class="connexion" href="{{path('app_register')}}" style="cursor:pointer">
+                                <i class="fa-solid fa-user-plus connexion  me-2" cursor:pointer></i>Inscription
+                            </a>
+                {% endif %}
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+            <div class="container-fluid">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="{{path('app_byblio')}}">Accueil</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="{{path('app_livres')}}">Toutes les livres</a>
+                        </li>
+                        <li class="nav-item me-2 dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Romans
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Policiers</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Historiques</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">D'aventures</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="{{path('app_jeunesse')}}">Jeunesse</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="#">Pièces de théâtre</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="{{path('app_contes')}}">Contes et nouvelles</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="{{path('app_author')}}">Auteurs</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Rechercher">
+                        <button class="btn buttons" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        
+
+    </div>
+</div>

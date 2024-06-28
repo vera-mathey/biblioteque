@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}jeunesse{% endblock %}
+{% block body %}
+<div class="container-fluid mb-5">
+    <div class="container">
+        <div class="col-md-12 mt-5">
+        <h1 class="d-flex justify-content-center">Livres dans le genre Jeunesse</h1>
+            <div class"row">
+            
+                {% for jeunesse in jeunesse %}
+                    <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :jeunesse.id}) }}">{{jeunesse.title}}</a></div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showauthor', {'id' :jeunesse.author.id}) }}"><p>{{jeunesse.author.firstname}}&nbsp{{jeunesse.author.lastname}}</p></a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

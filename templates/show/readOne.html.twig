@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}ReadOne{% endblock %}
+{% block body %}
+<div class="container-fluid mb-5">
+    <div class="container">
+    <div class="col-md-12 mt-5">
+        <div class"row">
+            <div class="col-md-8">
+                <div class="col-md-12 mb-5 h2-page-livre">{{livre.title}}</div>
+                <div class="col-md-12 mb-5">{{livre.author.firstname}}&nbsp;{{livre.author.lastname}}</div>
+            </div>
+
+            <div class="col-md-4 mb-5"><img class="img-fluid" src="{{asset('divers/images/livres/' ~ livre.image)}}" alt=""></div>
+        </div>
+    </div>
+        <div class="col-md-12 mb-5">{{livre.content|nl2br}}</div>
+        {#Appel du formulaire#}
+        <div class="row mb-3">
+            {% include "comment/comment.html.twig" with{'parentcommentForm' : commentForm} %}
+        </div>
+        <div class="row mb-5">
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Affichez <span><script id="nombrecomments"></script></span> commentaires
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample comments">
+                {% for comment in comments %}
+                    <div class="col-md-1 mb-0">
+                        <img class="img-fluid" src="{{asset('divers/images/users/' ~ comment.user.avatar)}}" alt="avatar"> 
+                    </div>
+                    <div class="col-md-11 mb-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span class="zhcdina">{{comment.user.firstname}} &nbsp; {{comment.user.lastname}}</span> &ensp;
+                                <span class="zrddate">{{ comment.createdAt|date('D d M Y H:i') }}</span> 
+                            </div>
+                            <div class="col-md-12 zhccontent">{{ comment.content|striptags|nl2br }}</div>
+                         </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock %}

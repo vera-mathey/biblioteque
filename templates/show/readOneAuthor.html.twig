@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}ReadOneAuthor{% endblock %}
+{% block body %}
+<div class="container-fluid mb-5 h-80">
+    <div class="container">
+    <div class="col-md-12 mt-5">
+        <div class"row">
+            <div class="col-md-12">
+                <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-2 mb-5 h2-page-livre">{{ author.firstname }}</div>
+                    <div class="col-md-2 mb-5 h2-page-livre">{{ author.lastname }}</div>
+                </div>
+                    <div class="col-md-8 mb-5"><img class="img-fluid" src="{{asset('divers/images/' ~ author.image)}}" alt=""></div>
+                </div>    
+            </div>
+            
+        </div>
+    </div>
+        <div class="col-md-12 mb-5">{{ author.biographie|nl2br }}</div>
+    </div>
+</div>
+{% endblock %}

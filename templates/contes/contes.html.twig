@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contes et Nouvelles{% endblock %}
+{% block body %}
+<div class="container-fluid mb-5">
+    <div class="container">
+        <div class="col-md-12 mt-5">
+        <h1 class="d-flex justify-content-center">Livres dans le genre Contes et Nouvelles</h1>
+            <div class"row">
+            
+                {% for contes_et_nouvelles in contes_et_nouvelles %}
+                    <div class="col-md-12 mb-2 d-flex justify-content-center"><a class="h2-livre" href="{{path('showone', {'id' :contes_et_nouvelles.id}) }}">{{contes_et_nouvelles.title}}</a></div>
+                    <div class="col-md-12 mb-2 d-flex justify-content-center"><a href="{{path('showauthor', {'id' :contes_et_nouvelles.author.id}) }}"><p>{{contes_et_nouvelles.author.firstname}}&nbsp{{contes_et_nouvelles.author.lastname}}</p></a></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

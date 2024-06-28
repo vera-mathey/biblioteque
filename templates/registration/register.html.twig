@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="container mt-5 mb-5">
+            <h1>Inscrivez-vous</h1>
+
+            <form method="post" enctype="multipart/form-data" class="row g-3 mb-6">
+                {{ form_errors(registrationForm) }}
+                {{ form_start(registrationForm) }}
+
+                <div class="col-md-6 mb-3">
+                    {{ form_row(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_row(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_row(registrationForm.avatar, {'attr': {'class': 'form-control', 'placeholder': 'Avatar'}}) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+                </div>
+                <div class="col-md-12 mb-3">
+                    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+                </div>
+
+                {# Ajout du champ CSRF token #}
+                {{ form_row(registrationForm._token) }}
+
+                <div class="col-12">
+                    <div class="row">
+
+                        {{ form_row(registrationForm.agreeTerms) }}
+                        <div class="col-md-2 mt-3"><button type="submit" class="btn buttons">S'inscrire</button></div>
+                        <div class="col-md-1 mt-3"><a href="{{ path('app_login') }}">Connexion</a></div>
+                        <div class="col-md-9"></div>
+                    </div>
+                </div>
+
+                {{ form_end(registrationForm) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
